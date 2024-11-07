@@ -11,11 +11,11 @@
 #pragma pack(push,1)
 struct TGA_Header {
 	char idlength;
-	char colormaptype;
+	char colourmaptype;
 	char datatypecode;
-	short colormaporigin;
-	short colormaplength;
-	char colormapdepth;
+	short colourmaporigin;
+	short colourmaplength;
+	char colourmapdepth;
 	short x_origin;
 	short y_origin;
 	short width;
@@ -25,7 +25,7 @@ struct TGA_Header {
 };
 #pragma pack(pop)
 
-struct TGAColor {
+struct TGAColour {
 	union {
 		struct {
 			unsigned char b, g, r, a;
@@ -35,25 +35,25 @@ struct TGAColor {
 	};
 	int bytespp;
 
-	TGAColor() : val(0), bytespp(1) {
+	TGAColour() : val(0), bytespp(1) {
 	}
 
-	TGAColor(unsigned char R, unsigned char G, unsigned char B, unsigned char A) : b(B), g(G), r(R), a(A), bytespp(4) {
+	TGAColour(unsigned char R, unsigned char G, unsigned char B, unsigned char A) : b(B), g(G), r(R), a(A), bytespp(4) {
 	}
 
-	TGAColor(int v, int bpp) : val(v), bytespp(bpp) {
+	TGAColour(int v, int bpp) : val(v), bytespp(bpp) {
 	}
 
-	TGAColor(const TGAColor &c) : val(c.val), bytespp(c.bytespp) {
+	TGAColour(const TGAColour &c) : val(c.val), bytespp(c.bytespp) {
 	}
 
-	TGAColor(const unsigned char *p, int bpp) : val(0), bytespp(bpp) {
+	TGAColour(const unsigned char *p, int bpp) : val(0), bytespp(bpp) {
 		for (int i=0; i<bpp; i++) {
 			raw[i] = p[i];
 		}
 	}
 
-	TGAColor & operator =(const TGAColor &c) {
+	TGAColour & operator =(const TGAColour &c) {
 		if (this != &c) {
 			bytespp = c.bytespp;
 			val = c.val;
@@ -85,8 +85,8 @@ public:
 	bool flip_horizontally();
 	bool flip_vertically();
 	bool scale(int w, int h);
-	TGAColor get(int x, int y);
-	bool set(int x, int y, TGAColor c);
+	TGAColour get(int x, int y);
+	bool set(int x, int y, TGAColour c);
 	~TGAImage();
 	TGAImage & operator =(const TGAImage &img);
 	int get_width();

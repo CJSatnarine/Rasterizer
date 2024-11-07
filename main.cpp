@@ -1,12 +1,12 @@
 #include "tgaimage.h"
 using namespace std;
 
-const TGAColor white = TGAColor(255, 255, 255, 255);
-const TGAColor red = TGAColor(255, 0, 0, 255);
-const TGAColor green = TGAColor(0, 255, 0, 255);
-const TGAColor blue = TGAColor(0, 0, 255, 255);
+const TGAColour white = TGAColour(255, 255, 255, 255);
+const TGAColour red = TGAColour(255, 0, 0, 255);
+const TGAColour green = TGAColour(0, 255, 0, 255);
+const TGAColour blue = TGAColour(0, 0, 255, 255);
 
-void line(int x0, int y0, int x1, int y1, TGAImage &image, TGAColor colour);
+void line(int x0, int y0, int x1, int y1, TGAImage &image, TGAColour colour);
 
 int main(int argc, char** argv) {
     TGAImage image(100, 100, TGAImage::RGB);
@@ -20,7 +20,7 @@ int main(int argc, char** argv) {
     return 0;
 }
 
-void line(int x0, int y0, int x1, int y1, TGAImage &image, TGAColor colour) {
+void line(int x0, int y0, int x1, int y1, TGAImage &image, TGAColour colour) {
     bool steep = false;
     if (abs(x0 - x1) < abs(y0 - y1)) {
         swap(x0, y0);
